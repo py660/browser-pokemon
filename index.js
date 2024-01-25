@@ -1,4 +1,1 @@
-export function main(){
-    alert("bye")
-};
-//nah bro
+alert("bye")
