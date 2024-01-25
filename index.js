@@ -1,2 +1,2 @@
-function main(){alert("hi")};main()
+function main(){alert("bye")};main()
 //nah bro
