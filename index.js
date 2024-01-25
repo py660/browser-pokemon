@@ -1,2 +1,4 @@
-function main(){alert("bye")};main()
+export function main(){
+    alert("bye")
+};
 //nah bro
