@@ -1,1 +1,1 @@
-alert("bye")
+console.log("1")
