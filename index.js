@@ -1,1 +1,1 @@
-function main(){alert("hi")}main()
+function main(){alert("hi")};main()
