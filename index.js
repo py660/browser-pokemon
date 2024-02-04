@@ -8,6 +8,7 @@ function doBrowserPokemon(){
         }
         let img = document.createElement("img")
         img.src = "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024"
+        img.style.all = "unset";
         img.style.position = "fixed";//clientWidth, clientHeight
         let width  = 50;
         let height = 50;
