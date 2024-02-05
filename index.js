@@ -16,7 +16,7 @@ function doBrowserPokemon(){
         let y = Math.floor(Math.random()*(window.innerHeight-height));
         let uuid = uuidv4();
         img.id = uuid;
-        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1};
+        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: 1, dy: 1};
         img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.left = x + "px";
