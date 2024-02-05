@@ -16,7 +16,7 @@ function doBrowserPokemon(){
         let y = Math.floor(Math.random()*(window.innerHeight-height));
         let uuid = uuidv4();
         img.id = uuid;
-        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: 1, dy: 1};
+        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1};
         img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.left = x + "px";
@@ -34,10 +34,9 @@ setInterval(()=>{
             let img = document.getElementById(id);
             let e   = browserPokemon[id];
             e.x += e.dx;
-            e.x += e.dy;
+            e.y += e.dy;
             img.style.left = e.x + "px";
             img.style.top = e.y + "px";
-            console.log(e.x, window.innerWidth-e.width);
             if (e.x >= window.innerWidth-e.width){e.dx *= -1; e.x = window.innerWidth-e.width}
             if (e.y >= window.innerHeight-e.height){e.dy *= -1; e.y = window.innerHeight-e.height}
             if (e.x <= 0){e.dx *= -1; e.x = 0}
