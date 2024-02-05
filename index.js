@@ -37,7 +37,7 @@ setInterval(()=>{
             e.x += e.dy;
             img.style.left = e.x + "px";
             img.style.top = e.y + "px";
-            console.log(dx, dy);
+            console.log(e.dx, e.dy);
             if (img.x >= window.innerWidth-e.width || img.x <= 0) e.dx *= -1;
             if (img.y >= window.innerHeight-e.height || img.y <= 0) e.dy *= -1;
         });
