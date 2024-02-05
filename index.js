@@ -3,20 +3,20 @@ function doBrowserPokemon(){
     try{
         function uuidv4() {
             return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
             );
         }
-        let img = document.createElement("img")
-        img.src = "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024"
+        let img = document.createElement("img");
+        img.src = "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024";
         img.style.all = "unset";
-        img.style.position = "fixed";//clientWidth, clientHeight
+        img.style.position = "fixed";
         let width  = 50;
         let height = 50;
         let x = Math.floor(Math.random()*(window.innerWidth-width));
         let y = Math.floor(Math.random()*(window.innerHeight-height));
         let uuid = uuidv4();
         img.id = uuid;
-        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1}
+        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1};
         img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.left = x + "px";
@@ -32,12 +32,12 @@ setInterval(()=>{
     Object.keys(browserPokemon).forEach((id)=>{
         let img = document.getElementById(id);
         let e   = browserPokemon[id];
-        e.x += dx
-        e.x += dy
+        e.x += dx;
+        e.x += dy;
         img.style.left = e.x + "px";
         img.style.top = e.y + "px";
-        if (img.x >= window.innerWidth-e.width) dx *= -1
-        if (img.y >= window.innerHeight-e.height) dy *= -1
+        if (img.x >= window.innerWidth-e.width) dx *= -1;
+        if (img.y >= window.innerHeight-e.height) dy *= -1;
     });
 }, 15)
 /*
