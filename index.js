@@ -1,4 +1,5 @@
 function doBrowserPokemon(){
+    alert("byebye");
     try{
         let browserPokemon = {};
         function uuidv4() {
