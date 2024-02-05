@@ -37,9 +37,9 @@ setInterval(()=>{
             e.x += e.dy;
             img.style.left = e.x + "px";
             img.style.top = e.y + "px";
-            console.log(img.x, window.innerWidth-e.width);
-            if (img.x >= window.innerWidth-e.width || img.x <= 0) e.dx *= -1; e.x = window.innerWidth-e.width;
-            if (img.y >= window.innerHeight-e.height || img.y <= 0) e.dy *= -1; e.y = window.innerHeight-e.height;
+            console.log(e.x, window.innerWidth-e.width);
+            if (e.x >= window.innerWidth-e.width || e.x <= 0) e.dx *= -1; e.x = window.innerWidth-e.width;
+            if (e.y >= window.innerHeight-e.height || e.y <= 0) e.dy *= -1; e.y = window.innerHeight-e.height;
         });
     }catch(e){
         alert(e);
