@@ -38,8 +38,10 @@ setInterval(()=>{
             img.style.left = e.x + "px";
             img.style.top = e.y + "px";
             console.log(e.x, window.innerWidth-e.width);
-            if (e.x >= window.innerWidth-e.width || e.x <= 0){e.dx *= -1}
-            if (e.y >= window.innerHeight-e.height || e.y <= 0){e.dy *= -1}
+            if (e.x >= window.innerWidth-e.width){e.dx *= -1; e.x = window.innerWidth-e.width}
+            if (e.y >= window.innerHeight-e.height){e.dy *= -1; e.y = window.innerHeight-e.height}
+            if (e.x <= 0){e.dx *= -1; e.x = 0}
+            if (e.y <= 0){e.dy *= -1; e.y = 0}
         });
     }catch(e){
         alert(e);
