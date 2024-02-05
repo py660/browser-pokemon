@@ -29,17 +29,21 @@ function doBrowserPokemon(){
     }
 }
 setInterval(()=>{
-    Object.keys(browserPokemon).forEach((id)=>{
-        let img = document.getElementById(id);
-        let e   = browserPokemon[id];
-        e.x += dx;
-        e.x += dy;
-        img.style.left = e.x + "px";
-        img.style.top = e.y + "px";
-        if (img.x >= window.innerWidth-e.width) dx *= -1;
-        if (img.y >= window.innerHeight-e.height) dy *= -1;
-    });
-}, 15)
+    try{
+        Object.keys(browserPokemon).forEach((id)=>{
+            let img = document.getElementById(id);
+            let e   = browserPokemon[id];
+            e.x += e.dx;
+            e.x += e.dy;
+            img.style.left = e.x + "px";
+            img.style.top = e.y + "px";
+            if (img.x >= window.innerWidth-e.width) dx *= -1;
+            if (img.y >= window.innerHeight-e.height) dy *= -1;
+        });
+    }catch(e){
+        alert(e);
+    }
+}, 15);
 /*
 javascript: (function(){if (window.trustedTypes && window.trustedTypes.createPolicy && !Object.keys(window.trustedTypes)) {window.trustedTypes.createPolicy('default', {createHTML: (string) => string,createScriptURL: string => string,createScript: string => string,});} if (typeof doBrowserPokemon == "function"){doBrowserPokemon();}else{var jsCode = document.createElement('script');jsCode.setAttribute('src', 'https://py660.github.io/browser-pokemon/index.js?cache='+(new Date()).toString());document.body.appendChild(jsCode);var listener = document.addEventListener("securitypolicyviolation", (e) => {if (e.blockedURI.startsWith("https://py660.github.io/browser-pokemon/index.js")){alert("Script blocked by CSP. Please try again on another website.");document.removeEventListener("securitypolicyviolation", listener);}});jsCode.onload = ()=>{alert("Installing browser pokemon...");doBrowserPokemon();}}}())
 */
