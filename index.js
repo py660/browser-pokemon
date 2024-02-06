@@ -3,8 +3,10 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   // if present, the header is where you move the DIV from:
   elmnt.onmousedown = dragMouseDown;
+  let id = elmnt.id;
 
   function dragMouseDown(e) {
+    browserPokemon[id].dragging = true;
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
@@ -26,9 +28,13 @@ function dragElement(elmnt) {
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    browserPokemon[id].x = elmnt.offsetTop - pos2;
+    browserPokemon[id].y = elmnt.offsetLeft - pos1;
   }
 
   function closeDragElement() {
+
+    browserPokemon[id].dragging = false;
     // stop moving when mouse button is released:
     document.onmouseup = null;
     document.onmousemove = null;
@@ -47,19 +53,21 @@ function doBrowserPokemon(){
         img.src = "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1024";
         img.style.all = "unset";
         img.style.position = "fixed";
+        img.style.cursor = "grab";
         let width  = 50;
         let height = 50;
         let x = Math.floor(Math.random()*(window.innerWidth-width));
         let y = Math.floor(Math.random()*(window.innerHeight-height));
         let uuid = uuidv4();
         img.id = uuid;
-        browserPokemon[uuid] = {id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1};
+        browserPokemon[uuid] = {dragging: false, id: uuid, width: width, height: height, x: x, y: y, dx: Math.random()*2-1, dy: Math.random()*2-1};
         img.style.width = width + "px";
         img.style.height = height + "px";
         img.style.left = x + "px";
         img.style.top = y + "px";
         img.style.zIndex = "999999999999";
         document.body.append(img);
+        dragElement(img);
         window.browserPokemon = browserPokemon;
     }catch(e){
         alert(e);
@@ -68,16 +76,18 @@ function doBrowserPokemon(){
 setInterval(()=>{
     try{
         Object.keys(browserPokemon).forEach((id)=>{
-            let img = document.getElementById(id);
-            let e   = browserPokemon[id];
-            e.x += e.dx;
-            e.y += e.dy;
-            img.style.left = e.x + "px";
-            img.style.top = e.y + "px";
-            if (e.x >= window.innerWidth-e.width){e.dx *= -1; e.x = window.innerWidth-e.width}
-            if (e.y >= window.innerHeight-e.height){e.dy *= -1; e.y = window.innerHeight-e.height}
-            if (e.x <= 0){e.dx *= -1; e.x = 0}
-            if (e.y <= 0){e.dy *= -1; e.y = 0}
+            if (!browserPokemon[id].dragging){
+                let img = document.getElementById(id);
+                let e   = browserPokemon[id];
+                e.x += e.dx;
+                e.y += e.dy;
+                img.style.left = e.x + "px";
+                img.style.top = e.y + "px";
+                if (e.x >= window.innerWidth-e.width){e.dx *= -1; e.x = window.innerWidth-e.width}
+                if (e.y >= window.innerHeight-e.height){e.dy *= -1; e.y = window.innerHeight-e.height}
+                if (e.x <= 0){e.dx *= -1; e.x = 0}
+                if (e.y <= 0){e.dy *= -1; e.y = 0}
+            }
         });
     }catch(e){
         alert(e);
