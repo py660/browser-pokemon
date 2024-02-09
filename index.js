@@ -22,8 +22,8 @@ function dragElement(elmnt) {
     pos4 = e.clientY;
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    browserPokemon[id].x = elmnt.offsetTop - pos2;
-    browserPokemon[id].y = elmnt.offsetLeft - pos1;
+    browserPokemon[id].x = elmnt.offsetLeft - pos1;
+    browserPokemon[id].y = elmnt.offsetTop - pos2;
     console.log(browserPokemon[id].x, browserPokemon[id].y);
   }
 
