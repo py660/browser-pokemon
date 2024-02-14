@@ -27,7 +27,6 @@ let pokemon = [
     "mimikyu.gif",
     "obstagoon.gif",
     "pikachu idle.gif",
-    "pikachu notalpha.gif",
     "pikachu running.gif",
     "pnytagalar.gif",
     "pooper.gif",
@@ -85,7 +84,8 @@ function dragElement(elmnt) {
 
 let browserPokemon = {};
 function doBrowserPokemon(){
-    for (let image of pokemon){
+    for (let i=0;i<5;i++){
+        let image = pokemon[Math.floor(Math.random()*pokemon.length)]
         try{
             function uuidv4() {
                 return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
@@ -98,8 +98,8 @@ function doBrowserPokemon(){
             img.style.position = "fixed";
             img.style.cursor = "grab";
             img.onload = ()=>{
-                let width  = img.width;
-                let height = img.height;
+                let width  = 100;
+                let height = img.height/img.width + 100;
                 let x = Math.floor(Math.random()*(window.innerWidth-width));
                 let y = Math.floor(Math.random()*(window.innerHeight-height));
                 let uuid = uuidv4();
